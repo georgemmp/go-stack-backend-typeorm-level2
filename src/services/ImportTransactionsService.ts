@@ -1,7 +1,6 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-restricted-syntax */
 import csvParse from 'csv-parse';
-import path from 'path';
 import fs from 'fs';
 
 import { getRepository, In } from 'typeorm';
@@ -19,8 +18,6 @@ class ImportTransactionsService {
   async execute(filepath: string): Promise<Transaction[]> {
     const repository = getRepository(Transaction);
     const categoryRepository = getRepository(Category);
-
-    // const csvFilePath = path.resolve(__dirname, '..', '..', 'tmp', filename);
 
     const readCSVStream = fs.createReadStream(filepath);
 
